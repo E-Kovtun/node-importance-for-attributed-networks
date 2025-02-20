@@ -15,6 +15,7 @@ Then, activate it:
 ```
 conda activate pine_env
 ```
+Also, add to PYTHONPATH the absolute path of the root of this repo.
 
 
 ### Step 2. Get data
