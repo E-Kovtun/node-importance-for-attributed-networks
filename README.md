@@ -35,7 +35,7 @@ bash bin/prepare_data.sh
 
 The resulting dicts have node id as a key and information on that node as a value. Information on each node include:
 * `emb` - an embedding vector of a text attribute of a node
-* `out` - list of nodes for which the considered node is an information supplier. It means that there is a knowledge flow from the condifered node to all nodes from the list. 
+* `out` - list of nodes for which the considered node is an information supplier. It means that there is a knowledge flow from the considered node to every node from the list. 
 
 
 
