@@ -19,8 +19,8 @@ conda activate pine_env
 
 ### Step 2. Get data
 
-We provide the studied datasets in https://drive.google.com/drive/folders/1ZYhW_FixUBKTDjegfbZKg62VrEAkt0gR?usp=sharing.
-To download all datasets into folder `data`, run:
+We provide the studied datasets in https://drive.google.com/drive/folders/10gtjmNtiOMKBSQ906t3lUIx4OXF7mQkD?usp=share_link. There are six attributed datasets: Cora, CiteSeer, PubMed, Wiki-CS, HEP-TH, and DBLP.
+To download all of them into folder `data`, run:
 ```
 bash bin/get_data.sh
 ```
