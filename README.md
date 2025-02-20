@@ -24,3 +24,18 @@ To download all of them into folder `data`, run:
 ```
 bash bin/get_data.sh
 ```
+
+### Step 3. Prepare data
+
+We convert all datasets to the dict format with an unified structure. Note that for some datasets, we get embeddings from text attributes with the help of the pretrained models from HuggingFace.  
+To prepare datasets and save them into folder `prepare_data`, run:
+```
+bash bin/prepare_data.sh
+```
+
+The resulting dicts have node id as a key and information on that node as a value. Information on each node include:
+* `emb` - an embedding vector of a text attribute of a node
+* `out` - list of nodes for which the considered node is an information supplier. It means that there is a knowledge flow from the condifered node to all nodes from the list. 
+
+
+
