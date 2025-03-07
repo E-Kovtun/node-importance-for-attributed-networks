@@ -2,16 +2,24 @@
 
 PINE is an unsupervised approach for identifying important nodes in attributed networks. Importance of nodes is considered within an influence maximization paradigm. The nodes are vital if they cause a great information spread in the network if a diffusion process starts from them. PINE allows to effectively account for node features to discover crucial nodes from topology and attribute perspectives. PINE is a learning-based framework with an underlying attention mechanism, which is a key difference from the traditional centrlaity measures, like Degree Centrality or PageRank. 
 
+![pine](./pictures/pine.png)
+<!---
 <img src="./pictures/pine.png" width="800">
+-->
 
 In summary, the result of PINE work is an identified set of important nodes in view of graph structure and node attributes:
 
+![graph](./pictures/graph_citeseer.png)
+<!---
 <img src="./pictures/graph_citeseer.png" width="800">
-
+-->
 
 Importantly, PINE outperforms various degree-based centrality measures and iterative algorithms, like PageRank, by discovering nodes of greater significance:
 
+![wiki](./pictures/wiki_ic.png)
+<!---
 <img src="./pictures/wiki_ic.png" width="800">
+-->
 
 To get more details on PINE framework and run PINE on your attributed networks, read below.
 
