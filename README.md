@@ -73,7 +73,7 @@ As an output, you will get a dict in `results` folder, with the keys `lt` and `i
 #### Results
 Table with the resulting influence spread values when use different methods to select influential starting nodes. Top-100 nodes are selected as seed nodes. The performance is reported within respect to two diffusion models **LT+** and **IC+**.
 
-| **Data** | **Simulation model**           | **Degree** | **Out-degree**    | **Weighted**      | **Relative**      | **DSLI** | **PageRank**      | **Katz** | **VoteRank++**    | **EnRenew**       | **BII** | **PINE (ours)** |
+| **Dataset** | **Simulation model**           | **Degree** | **Out-degree**    | **Weighted out-degree**      | **Relative out-degree**      | **DSLI** | **PageRank**      | **Katz** | **VoteRank++**    | **EnRenew**       | **BII** | **PINE (ours)** |
 |:--------:|:--------------:|:----------:|:-----------------:|:-----------------:|:-----------------:|:--------:|:-----------------:|:--------:|:-----------------:|:-----------------:|:-------:|:-----------------:|
 |  **Cora**     |  **LT+** | 0.312      | 0.321             | 0.314             | 0.325             | 0.064    | 0.286             | 0.320    | 0.323             | 0.328 | 0.274   | **0.331**    |
 |   | **IC+** | 0.083      | 0.083             | **0.086**    | 0.085 | 0.045    | 0.076             | 0.082    | 0.084             | 0.079             | 0.072   | **0.086**    |
