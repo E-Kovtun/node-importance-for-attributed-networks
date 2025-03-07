@@ -4,6 +4,10 @@ PINE is an unsupervised approach for identifying important nodes in attributed n
 
 ![pine](./pictures/pine.png)
 
+In summary, the result of PINE work is an identified set of important nodes in view of graph structure and node attributes:
+
+<img src="./pictures/graph_citeseer.png" width="800">
+
 To find important nodes in the attributed graphs, proceed as follows.
 
 ### Step 1. Set environment
