@@ -55,10 +55,10 @@ A folder `src/baselines` includes different methods for ealuation of node import
 A goal of each method is to assign each node with an importance score calculted with the predefined rule. The larger assigned score the more important the node is considered to be in the network. The limitation of baseline approaches is their exclusive focus on structural properties. However, to estimate an importance of each node in the attributed network comprehensively, we need to account for information in node features. PINE is capable of doing that. 
 
 #### Evaluation of results
-To compare method performance, we adopt simulation-based procedure. Each methods associates importnace scores with nodes. Then, top-K nodes are taken as seed node for the start of information diffusion process. At the end, an influence spread over the network is evaluated. The method is better than others if it identifies nodes, which lead to the greatest spread of information. 
+To compare method performance, we adopt simulation-based procedure. Each methods associates importance scores with nodes. Then, top-K nodes are taken as seed node for the start of information diffusion process. At the end, an influence spread over the network is evaluated. The method is better than others if it identifies nodes, which lead to the greatest spread of information. 
 
 #### Simulation models
-As we consider attributed networks, it is important to simulate information propagation taking into account node attributes. To do this, each edge of the graph is associated with topology and attribute weghts. Then, these weights are used in such simulaiton models as **Linear Threshold (LT)** and **Independent Cascade (IC)**. We mark them as **LT+** and **IC+** to indicate their attribute-awareness. Their implementations are given in a folder `src/simulation`.
+As we consider attributed networks, it is important to simulate information propagation taking into account node attributes. To do this, each edge of the graph is associated with topology and attribute weghts. Then, these weights are used in such simulaiton models as **Linear Threshold (LT)** and **Independent Cascade (IC)**. We mark them as **LT+** and **IC+** to indicate their attribute-awareness. The implementations of **LT+** and **IC+** are given in a folder `src/simulation`: [**LT+**](src/simulation/LT_plus.py), [**IC+**](src/simulation/IC_plus.py) .
 
 #### Launch all methods
 To run methods:
