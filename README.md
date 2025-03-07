@@ -37,7 +37,7 @@ bash bin/get_data.sh
 
 ### Step 3. Prepare data
 
-We convert all datasets to the dict format with an unified structure. Note that for some datasets, we get embeddings from text attributes with the help of the pretrained models from HuggingFace.  
+We convert all datasets to the dict format with an unified structure. The datasets, like Cora, CiteSeer, PubMed, and Wiki-CS, come with already prepared embeddings for text attributes in nodes. For some datasets, we get embeddings for text features with the help of the pretrained models from HuggingFace. So, for HEP-TH dataset we use [PhysBERT](https://huggingface.co/thellert/physbert_cased), and for DBLP dataset we leverage [SPECTER](https://huggingface.co/allenai/specter2_regression).
 To prepare datasets and save them into folder `prepared_data`, run:
 ```
 bash bin/prepare_data.sh
