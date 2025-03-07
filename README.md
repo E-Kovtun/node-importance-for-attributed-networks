@@ -58,7 +58,7 @@ A goal of each method is to assign each node with an importance score calculted 
 To compare method performance, we adopt simulation-based procedure. Each methods associates importance scores with nodes. Then, top-K nodes are taken as seed node for the start of information diffusion process. At the end, an influence spread over the network is evaluated. The method is better than others if it identifies nodes, which lead to the greatest spread of information. 
 
 #### Simulation models
-As we consider attributed networks, it is important to simulate information propagation taking into account node attributes. To do this, each edge of the graph is associated with topology and attribute weghts. Then, these weights are used in such simulaiton models as **Linear Threshold (LT)** and **Independent Cascade (IC)**. We mark them as **LT+** and **IC+** to indicate their attribute-awareness. The implementations of **LT+** and **IC+** are given in a folder `src/simulation`: [**LT+**](src/simulation/LT_plus.py), [**IC+**](src/simulation/IC_plus.py) .
+As we consider attributed networks, it is important to simulate information propagation taking into account node attributes. To do this, each edge of the graph is associated with topology and attribute weghts. Then, these weights are used in such simulaiton models as **Linear Threshold (LT)** and **Independent Cascade (IC)**. We mark them as **LT+** and **IC+** to indicate their attribute-awareness. The implementations of simulation models are given in a folder `src/simulation`: [**LT+**](src/simulation/LT_plus.py), [**IC+**](src/simulation/IC_plus.py) .
 
 #### Launch all methods
 To run methods:
@@ -69,4 +69,22 @@ python src/run_methods.py
 In `src/run_methods.py`, you need to specify a path to a dataset, a number of seed nodes (`num_starts`) for initiation of diffusion process, and a number of simulation runs `num_runs` (there will be `num_runs` simulation runs for each value of `num_starts`). 
 
 As an output, you will get a dict in `results` folder, with the keys `lt` and `ic`, denoting a propagation model. For each propagation model, there are names of the considered methods and the corresponding values of influence spread. A number of influence spread values for each method is defined by a number of values in `num_starts`. 
+
+#### Results
+Table with the resulting influence spread values when use different methods to select influential starting nodes. Top-100 nodes are selected as seed nodes. The performance is reported within respect to two diffusion models **LT+** and **IC+**.
+
+| **Data** | **Simulation model**           | **Degree** | **Out-degree**    | **Weighted**      | **Relative**      | **DSLI** | **PageRank**      | **Katz** | **VoteRank++**    | **EnRenew**       | **BII** | **PINE (ours)** |
+|:--------:|:--------------:|:----------:|:-----------------:|:-----------------:|:-----------------:|:--------:|:-----------------:|:--------:|:-----------------:|:-----------------:|:-------:|:-----------------:|
+|  **Cora**     |  **LT+** | 0.312      | 0.321             | 0.314             | 0.325             | 0.064    | 0.286             | 0.320    | 0.323             | 0.328 | 0.274   | **0.331**    |
+|   | **IC+** | 0.083      | 0.083             | **0.086**    | 0.085 | 0.045    | 0.076             | 0.082    | 0.084             | 0.079             | 0.072   | **0.086**    |
+| **CiteSeer**     | **LT+** | 0.203      | 0.245             | 0.246             | 0.253             | 0.187    | 0.260             | 0.256    | 0.257             | 0.261 | 0.235   | **0.281**    |
+|     | **IC+** | 0.073      | 0.080             | 0.085 | 0.083             | 0.074    | 0.084             | 0.081    | 0.083             | 0.080             | 0.077   | **0.088**    |
+| **PubMed**     | **LT+** | 0.078      | 0.106             | 0.091             | 0.103             | 0.064    | **0.117**    | 0.100    | 0.096             | 0.081             | 0.063   | 0.110 |
+|      | **IC+** | 0.022      | 0.027             | 0.027             | 0.027             | 0.020    | 0.028 | 0.024    | 0.027             | 0.018             | 0.015   | **0.032**  |
+| **Wiki-CS**     | **LT+** | 0.772      | 0.809 | 0.809 | 0.795             | -        | **0.812**    | -        | 0.691             | 0.764             | 0.402   | 0.801             |
+|     | **IC+** | 0.069      | 0.077             | 0.077             | 0.077             | -        | 0.085 | -        | 0.059             | 0.054             | 0.022   | **0.092**    |
+| **HEP-TH**     | **LT+** | 0.206      | 0.233             | 0.234             | 0.231             | -        | **0.321**    | -        | 0.246             | 0.289             | 0.224   | 0.316 |
+|      | **IC+** | 0.023      | 0.026             | 0.026             | 0.026             | -        | 0.037             | -        | 0.041 | 0.029             | 0.021   | **0.047**    |
+| **DBLP**     | **LT+** | 0.143      | 0.160             | 0.158             | 0.161             | 0.141    | 0.163 | 0.160    | 0.131             | 0.158             | 0.148   | **0.169**    |
+|     | **IC+** | 0.035      | 0.039             | 0.039             | 0.040 | 0.035    | 0.037             | 0.037    | 0.035             | 0.034             | 0.031   | **0.044**    |
 
