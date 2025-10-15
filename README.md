@@ -10,7 +10,6 @@ In summary, the result of PINE work is an identified set of important nodes in v
 
 # 🚀 Launch PINE
 
-To run PINE on your attributed network, follow steps below.
 
 ### Step 1. Set environment
 To start, create conda environment with the name 'pine_env' with proper dependencies by running: 
