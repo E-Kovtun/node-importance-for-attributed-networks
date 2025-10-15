@@ -30,6 +30,7 @@ To download all of them into folder `data`, run:
 ```
 bash bin/get_data.sh
 ```
+ogbn-Arxiv dataset can be downloaded from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). It will be done automatically in the next step. 
 
 ### Step 3. Prepare data
 
