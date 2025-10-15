@@ -30,11 +30,11 @@ To download all of them into folder `data`, run:
 ```
 bash bin/get_data.sh
 ```
-ogbn-Arxiv dataset can be downloaded from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). It will be done automatically in the next step. 
+ogbn-Arxiv dataset can be downloaded from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). This will be done automatically in the next step. 
 
 ### Step 3. Prepare data
 
-We convert all datasets to the dict format with an unified structure. The datasets, like Cora, CiteSeer, PubMed, and Wiki-CS, come with already prepared embeddings for text attributes in nodes. For some datasets, we get embeddings for text features with the help of the pretrained models from HuggingFace. So, for HEP-TH dataset we use [PhysBERT](https://huggingface.co/thellert/physbert_cased), and for DBLP dataset we leverage [SPECTER](https://huggingface.co/allenai/specter2_regression).
+We convert all datasets to the dict format with an unified structure. The datasets, like Cora, CiteSeer, PubMed, Wiki-CS, and ogbn-Arxiv come with already prepared embeddings for text attributes in nodes. For some datasets, we get embeddings for text features with the help of the pretrained models from HuggingFace. So, for HEP-TH dataset we use [PhysBERT](https://huggingface.co/thellert/physbert_cased), and for DBLP dataset we leverage [SPECTER](https://huggingface.co/allenai/specter2_regression).
 To prepare datasets and save them into folder `prepared_data`, run:
 ```
 bash bin/prepare_data.sh
