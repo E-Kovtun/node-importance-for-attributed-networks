@@ -25,24 +25,14 @@ Also, add the root path of this repo to PYTHONPATH.
 
 ### Step 2. Get data
 
-We provide the studied datasets in [https://drive.google.com/drive/folders/10gtjmNtiOMKBSQ906t3lUIx4OXF7mQkD?usp=share_link](https://drive.google.com/drive/folders/10gtjmNtiOMKBSQ906t3lUIx4OXF7mQkD?usp=share_link). There are six attributed datasets: Cora, CiteSeer, PubMed, Wiki-CS, HEP-TH, and DBLP.
-To download all of them into folder `data`, run:
+We provide the studied datasets in [https://drive.google.com/drive/folders/10gtjmNtiOMKBSQ906t3lUIx4OXF7mQkD?usp=share_link](https://drive.google.com/drive/folders/10gtjmNtiOMKBSQ906t3lUIx4OXF7mQkD?usp=share_link). Seven attributed homogeneous networks are under consideration: Cora, CiteSeer, PubMed, Wiki-CS, HEP-TH, ogbn-Arxiv, and DBLP.
+To download them into folder `data`, run:
 ```
 bash bin/get_data.sh
 ```
-ogbn-Arxiv dataset can be downloaded from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). This will be done automatically in the next step. 
+ogbn-Arxiv dataset is available from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). 
 
-### Step 3. Prepare data
-
-We convert all datasets to the dict format with an unified structure. The datasets, like Cora, CiteSeer, PubMed, Wiki-CS, and ogbn-Arxiv come with already prepared embeddings for text attributes in nodes. For some datasets, we get embeddings for text features with the help of the pretrained models from HuggingFace. So, for HEP-TH dataset we use [PhysBERT](https://huggingface.co/thellert/physbert_cased), and for DBLP dataset we leverage [SPECTER](https://huggingface.co/allenai/specter2_regression).
-To prepare datasets and save them into folder `prepared_data`, run:
-```
-bash bin/prepare_data.sh
-```
-
-The resulting dicts have node id as a key and information on that node as a value. Information on each node include:
-* `emb` - an embedding vector of a text attribute of a node
-* `out` - list of nodes for which the considered node is an information supplier. It means that there is a knowledge flow from the considered node to each node from the list.
+The datasets, like Cora, CiteSeer, PubMed, Wiki-CS, and ogbn-Arxiv come with already prepared embeddings for text attributes in nodes. For the DBLP dataset, we use graph with node embeddings prepared in [TAG-benchmark](https://github.com/sktsherlock/TAG-Benchmark) (roberta_base_512_cls model). For HEP-TH dataset, we utilize [PhysBERT](https://huggingface.co/thellert/physbert_cased) model to infer embeddings (check [python script](src/data_preparation/get_embeds_hepth.py) for that, transformers library is needed). 
 
 ### Step 4. Run methods
 
