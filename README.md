@@ -20,7 +20,6 @@ Then, activate it:
 ```
 conda activate pine_env
 ```
-Also, add the root path of this repo to PYTHONPATH.
 
 
 ### Step 2. Get data
@@ -33,6 +32,7 @@ bash bin/get_data.sh
 ogbn-Arxiv dataset is available from [Open Graph Benchmark](https://ogb.stanford.edu/docs/nodeprop/). 
 
 The datasets, like Cora, CiteSeer, PubMed, Wiki-CS, and ogbn-Arxiv come with already prepared embeddings for text attributes in nodes. For the DBLP dataset, we use graph with node embeddings prepared in [TAG-benchmark](https://github.com/sktsherlock/TAG-Benchmark) (roberta_base_512_cls model). For HEP-TH dataset, we utilize [PhysBERT](https://huggingface.co/thellert/physbert_cased) model to infer embeddings (check [python script](src/data_preparation/get_embeds_hepth.py) for that, transformers library is needed). 
+
 
 ### Step 3. Run methods
 Here, we compare PINE with a set of traditional centrality measures. 
