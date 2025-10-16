@@ -68,6 +68,17 @@ python src/run_methods.py \
 
 
 # Case of heterogeneous network
+We explore a heterogeneous network called FB15K, which is a subset from a FreeBase. The data preprocessing step follows the precedure outlined in [repo](https://github.com/yankai-chen/EASING) on the basis of the [work](https://arxiv.org/pdf/2503.20697). 
+
+To download a heterogeneous network FB15K into a folder `heterogeneous_data`, run:
+```
+bash bin/get_heterogeneous_data.sh
+```
+
+
+
+
+
 
 
 
