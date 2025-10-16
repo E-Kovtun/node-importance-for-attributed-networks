@@ -64,7 +64,10 @@ python src/run_methods.py \
 * `device` is used for PINE training. Other graph measures are calculated on cpu by default.
 * `node_ratio` is a part of the nodes from which information dissemination process starts. 0.1 means that 10\% of nodes with the greatest importance scores are initialized as active.
 * `num_runs` is a number of Monte-Carlo simulation runs.
-* `res_folder` will contain the results that include optimized hyperparametrs of GAT, which is trained within PINE, and csv files with influence spread values for the selected measures under the specified propagation models. 
+* `res_folder` will contain the results that include optimized hyperparametrs of GAT, which is trained within PINE, and csv files with influence spread values for the selected measures under the specified propagation models.
+
+
+# Case of heterogeneous network
 
 
 
