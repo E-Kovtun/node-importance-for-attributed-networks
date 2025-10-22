@@ -132,6 +132,27 @@ To run full pipeline without division on scoring-aggregation steps:
 bash bin/pine_heterogeneous_pipeline.sh
 ```
 
+# Patent data
+
+We provide the studied datasets on patent networks in https://drive.google.com/drive/folders/1ZYhW_FixUBKTDjegfbZKg62VrEAkt0gR?usp=sharing. The folder name, e.g. photolithography_simulation, corresponds to the technological domain, for which patents are collected. Inside each folder, there is a `patents.csv` file with information on patents and their citation relations. The columns in dataframe have the meanings:
+* `title` - title of the patent
+* `id` - the patent number
+* `abstract` - abstract of the patent
+* `claims` - the patent claims
+* `citations` - ids and titles of patents that are cited by the considered patent
+* `cited_by` - ids and titles of patents that cite the considered patent
+* `classification_codes` - patent CPC codes 
+* `date` - the patent published date
+* `id_family` - a group of ids related to the considered patent. A patent can have multiple assigned ids due to being in different statuses or being registered in several jurisdictions
+* `cit` - the ids of patents that are present in the dataframe and are cited by the considered patent
+* `cit_by` - the ids of patents that are present in the dataframe and cite the considered patent
+* `score` - a relevance score of a patent toward the technological domain under consideration. The relevance score is estimated as a cosine similarity beween embeddings of patent title and a domain-related keyword, e.g. "photolithography simulation". Embeddings are obtained with a language model https://huggingface.co/AI-Growth-Lab/PatentSBERTa.
+
+To download all datasets into folder `data`, run:
+```
+bash bin/get_patent_data.sh
+```
+
 
 
 
