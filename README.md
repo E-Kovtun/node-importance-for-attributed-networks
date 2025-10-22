@@ -100,6 +100,38 @@ python src/heterogeneous_pine_scoring.py \
 
 After running the script, `result_folder` will contain folder `{dataset_name}_pine_importances` with json files that store PINE scores for nodes from subgraphs of different edge types. Also, `{dataset_name}_res_{exp_name}.csv` file will be saved in `result_folder`, which includes information on optimized hyperparameters (for GAT within PINE), metrics for solving Link Prediction task, and supervised metrics for node importance estimation problem. Supervised metrics are also provided for out-degree measure to compare with PINE results. 
 
+After scoring subgraphs of different edge type, one needs to aggregate results to get final importance scores for nodes. The validation set is used to select the relevant edge types to target task. Run the following script:
+
+```
+python src/heterogeneous_pine_aggregation.py \
+--dataset_name 'FB15K' \
+--data_path './heterogeneous_data' \
+--exp_name 'base' \
+--graph_data 'fb15k_rel.pk' \
+--semantic_data 'fb_lang.pk' \
+--split_data 'idx_1000' \
+--num_split_idx 1000 \
+--result_folder './heterogeneous_results' \
+--device 'cuda:0' \
+--pine_edge_types_folder 'FB15K_pine_importances_base' \
+--pine_edge_types_metrics 'FB15K_res_base.csv' \
+--final_res_name 'FB15K_final_supervised_res.json' \
+--pine_thr 0 \
+--train_num 8 \
+```
+
+* `pine_edge_types_folder` - folder with PINE scores for subgraphs of different edge types (result of `heterogeneous_pine_scoring.py` running)
+* `pine_edge_types_metrics` - file with metrics for different edge types (result of `heterogeneous_pine_scoring.py` running)
+* `final_res_name` - name of json file with final supervised metrics
+* `pine_thr` - threshold on Spearman correlation of PINE scores for one edge type and global ground truth scores. This parameter is needed to select edge types for overall PINE score calcultation
+* `train_num` - number of folds to include into train set for supervised evaluation (like it is done in [repo](https://github.com/yankai-chen/EASING))
+
+
+To run full pipeline without division on scoring-aggregation steps:
+```
+bash bin/pine_heterogeneous_pipeline.sh
+```
+
 
 
 
