@@ -153,8 +153,7 @@ To download all datasets into folder `data`, run:
 bash bin/get_patent_data.sh
 ```
 
-
-
+The file with partial expert markup is given via [link](https://docs.google.com/document/d/1O0ay6SVFiFTjfwXFgUMyjs0Rf9oURGdW/edit?rtpof=true).
 
 
 
