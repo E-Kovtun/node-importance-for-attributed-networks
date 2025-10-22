@@ -75,6 +75,33 @@ To download a heterogeneous network FB15K into a folder `heterogeneous_data`, ru
 bash bin/get_heterogeneous_data.sh
 ```
 
+The structure of data files in the folder `FB15K` is the following:
+* `fb15k_rel.pk` - file with graph data and structural features of nodes
+* `fb_lang.pk` - file with semantic features of nodes
+* `idx_1000` - folder that contains data splits with node IDs and their labels (ground truth markup of node importance scores)
+
+In a heterogeneous case, PINE considers subgraphs with particular edge types separately. For each subgraph that includes edges of one type, PINE produces importance scores for nodes that are part of this subgraph. To run heterogeneous PINE:
+
+```
+python src/heterogeneous_pine_scoring.py \
+--dataset_name 'FB15K' \
+--data_path './heterogeneous_data' \
+--exp_name 'base' \
+--graph_data 'fb15k_rel.pk' \
+--semantic_data 'fb_lang.pk' \
+--split_data 'idx_1000' \
+--num_split_idx 1000 \
+--result_folder './heterogeneous_results' \
+--device 'cuda:0' \
+--num_runs 5 \
+```
+
+* `num_runs` - the number of PINE laucnhes on each subgraph
+
+After running the script, `result_folder` will contain folder `{dataset_name}_pine_importances` with json files that store PINE scores for nodes from subgraphs of different edge types. Also, `{dataset_name}_res_{exp_name}.csv` file will be saved in `result_folder`, which includes information on optimized hyperparameters (for GAT within PINE), metrics for solving Link Prediction task, and supervised metrics for node importance estimation problem. Supervised metrics are also provided for out-degree measure to compare with PINE results. 
+
+
+
 
 
 
