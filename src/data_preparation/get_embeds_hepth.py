@@ -48,7 +48,7 @@ def main():
         if (paper1 in physics_dict) and (paper2 in physics_dict):
             physics_dict[paper2]['out'].append(paper1) 
 
-    with open('./prepared_data/hepth_dict.json', 'w') as f:
+    with open('./data/hepth_dict.json', 'w') as f:
         json.dump(physics_dict, f)
 
 

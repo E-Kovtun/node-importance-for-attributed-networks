@@ -54,6 +54,6 @@ def EnRenewRank(G, topk, order):
 def get_entropy_nodes(G):
     entropy = EnRenewRank(G, len(G.nodes()), 2)
     entropy = {node: val for (node, val) in entropy}
-    entropy_sorted = {k: v for k, v in sorted(entropy.items(), key=lambda item: item[1], reverse=True)}
-    entropy_nodes = list(entropy_sorted.keys())
-    return entropy_nodes
+    # entropy_sorted = {k: v for k, v in sorted(entropy.items(), key=lambda item: item[1], reverse=True)}
+    # entropy_nodes = list(entropy_sorted.keys())
+    return entropy

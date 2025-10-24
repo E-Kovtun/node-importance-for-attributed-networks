@@ -4,6 +4,7 @@ import networkx as nx
 import numpy as np 
 from tqdm import tqdm
 
+
 def run_LT(G, S, tw, aw, alpha1=0.5, alpha2=0.5):
     '''
     Input: G -- networkx directed graph
@@ -32,3 +33,69 @@ def run_LT(G, S, tw, aw, alpha1=0.5, alpha2=0.5):
         Sj = deepcopy(Snew)
         
     return T
+
+
+
+# def run_LT(G, S, tw, aw, alpha1=0.5, alpha2=0.5, max_steps=100):
+#     """
+#     Run LTPlus diffusion on directed graph G.
+
+#     Parameters:
+#     - G: networkx.DiGraph
+#     - S: list of initial seed nodes
+#     - tw: dict {(u,v): topology weight}
+#     - aw: dict {(u,v): attribute weight}
+#     - alpha1: weight for topology influence
+#     - alpha2: weight for attribute influence
+#     - max_steps: max iterations to avoid infinite loops
+
+#     Returns:
+#     - activated: set of activated nodes at diffusion end
+#     """
+
+#     assert isinstance(G, nx.DiGraph), "G must be a networkx.DiGraph"
+#     assert isinstance(S, list), "Seed set S must be a list"
+
+#     # Step 1: Compute combined weights and normalize per node (incoming edges)
+#     combined_weights = dict()
+#     for v in G.nodes():
+#         in_edges = list(G.in_edges(v))
+#         total_weight = 0.0
+#         for u, _ in in_edges:
+#             w_topo = tw.get((u, v), 0)
+#             w_attr = aw.get((u, v), 0)
+#             combined = alpha1 * w_topo + alpha2 * w_attr
+#             combined_weights[(u, v)] = combined
+#             total_weight += combined
+#         # Normalize if total_weight > 1 to ensure sum ≤ 1
+#         if total_weight > 1.0:
+#             for u, _ in in_edges:
+#                 combined_weights[(u, v)] /= total_weight
+
+#     # Step 2: Initialize thresholds and activated sets
+#     thresholds = {node: random.random() for node in G.nodes()}
+#     activated = set(S)
+#     newly_activated = set(S)
+
+#     # Step 3: Initialize accumulated influence per node
+#     influence = {node: 0.0 for node in G.nodes()}
+
+#     # Step 4: Diffusion process
+#     step = 0
+#     while newly_activated and step < max_steps:
+#         step += 1
+#         next_activated = set()
+#         for u in newly_activated:
+#             # For each neighbor v of u (outgoing edges)
+#             for v in G.successors(u):
+#                 if v not in activated:
+#                     # Accumulate influence from u to v
+#                     influence[v] += combined_weights.get((u, v), 0)
+#                     # Check threshold
+#                     if influence[v] >= thresholds[v]:
+#                         next_activated.add(v)
+#         activated.update(next_activated)
+#         newly_activated = next_activated
+
+#     return activated
+
